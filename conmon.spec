@@ -4,7 +4,7 @@
 #
 Name     : conmon
 Version  : 2.0.15
-Release  : 3
+Release  : 4
 URL      : https://github.com/containers/conmon/archive/v2.0.15.tar.gz
 Source0  : https://github.com/containers/conmon/archive/v2.0.15.tar.gz
 Summary  : No detailed summary available

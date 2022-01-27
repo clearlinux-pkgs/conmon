@@ -1,0 +1,43 @@
+From 001ee410d1024afa0426d437101b57b896fbe5b1 Mon Sep 17 00:00:00 2001
+From: Sascha Grunert <sgrunert@redhat.com>
+Date: Mon, 18 Oct 2021 09:52:41 +0200
+Subject: [PATCH] Make libdl optional in meson definition
+
+We now conditionally check for the availability of `dlopen` and add
+`libdl` if required.
+
+Fixes: https://github.com/containers/conmon/issues/298
+
+Signed-off-by: Sascha Grunert <sgrunert@redhat.com>
+---
+ meson.build | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 1fe9967..7e00979 100644
+--- a/meson.build
++++ b/meson.build
+@@ -34,7 +34,14 @@ add_project_arguments('-Os', '-Wall', '-Werror',
+                       language : 'c')
+ 
+ glib = dependency('glib-2.0')
+-libdl = cc.find_library('dl')
++
++cc = meson.get_compiler('c')
++null_dep = dependency('', required : false)
++if cc.has_function('dlopen')
++  libdl = null_dep
++else
++  libdl = cc.find_library('dl')
++endif
+ 
+ executable('conmon',
+            ['src/conmon.c',
+@@ -75,4 +82,3 @@ executable('conmon',
+            install : true,
+            install_dir : join_paths(get_option('libexecdir'), 'podman'),
+ )
+-
+-- 
+2.35.0
+

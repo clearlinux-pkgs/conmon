@@ -1,7 +1,7 @@
 From 001ee410d1024afa0426d437101b57b896fbe5b1 Mon Sep 17 00:00:00 2001
 From: Sascha Grunert <sgrunert@redhat.com>
 Date: Mon, 18 Oct 2021 09:52:41 +0200
-Subject: [PATCH] Make libdl optional in meson definition
+Subject: [PATCH 1/2] Make libdl optional in meson definition
 
 We now conditionally check for the availability of `dlopen` and add
 `libdl` if required.

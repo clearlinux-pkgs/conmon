@@ -4,7 +4,7 @@
 #
 Name     : conmon
 Version  : 2.0.32
-Release  : 6
+Release  : 7
 URL      : https://github.com/containers/conmon/archive/v2.0.32/conmon-2.0.32.tar.gz
 Source0  : https://github.com/containers/conmon/archive/v2.0.32/conmon-2.0.32.tar.gz
 Summary  : No detailed summary available
@@ -17,7 +17,9 @@ BuildRequires : buildreq-meson
 BuildRequires : glib-dev
 BuildRequires : libseccomp-dev
 BuildRequires : pkgconfig(glib-2.0)
+BuildRequires : systemd-dev
 Patch1: 0001-Make-libdl-optional-in-meson-definition.patch
+Patch2: 0002-Enable-journald-logging.patch
 
 %description
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/containers/conmon.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/containers/conmon/alerts/)
@@ -43,13 +45,14 @@ license components for the conmon package.
 %setup -q -n conmon-2.0.32
 cd %{_builddir}/conmon-2.0.32
 %patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643304546
+export SOURCE_DATE_EPOCH=1643315238
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

@@ -1,2 +1,1 @@
-0001-Make-libdl-optional-in-meson-definition.patch
-0002-Enable-journald-logging.patch
+0001-Enable-journald-logging.patch

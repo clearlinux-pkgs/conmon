@@ -1,7 +1,7 @@
-From 7e86c3da0294f34db89bab126624394f9159ebef Mon Sep 17 00:00:00 2001
+From 2a15d833300f911ad0f6d90896b67a894074ee18 Mon Sep 17 00:00:00 2001
 From: Ganesh Maharaj Mahalingam <ganesh.mahalingam@intel.com>
 Date: Thu, 27 Jan 2022 11:24:43 -0800
-Subject: [PATCH 2/2] Enable journald logging
+Subject: [PATCH] Enable journald logging
 
 Signed-off-by: Ganesh Maharaj Mahalingam <ganesh.mahalingam@intel.com>
 ---
@@ -49,5 +49,5 @@ index 7e00979..1b2b850 100644
 +           include_directories: incdir,
  )
 -- 
-2.35.0
+2.35.1
 

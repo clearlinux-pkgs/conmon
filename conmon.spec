@@ -4,7 +4,7 @@
 #
 Name     : conmon
 Version  : 2.1.0
-Release  : 9
+Release  : 10
 URL      : https://github.com/containers/conmon/archive/refs/tags/v2.1.0.tar.gz
 Source0  : https://github.com/containers/conmon/archive/refs/tags/v2.1.0.tar.gz
 Summary  : No detailed summary available
@@ -12,7 +12,6 @@ Group    : Development/Tools
 License  : Apache-2.0 BSD-2-Clause MIT
 Requires: conmon-libexec = %{version}-%{release}
 Requires: conmon-license = %{version}-%{release}
-BuildRequires : buildreq-golang
 BuildRequires : buildreq-meson
 BuildRequires : glib-dev
 BuildRequires : libseccomp-dev
@@ -50,7 +49,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1644445252
+export SOURCE_DATE_EPOCH=1667094774
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -64,9 +63,9 @@ ninja -v -C builddir
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/conmon
-cp %{_builddir}/conmon-2.1.0/LICENSE %{buildroot}/usr/share/package-licenses/conmon/147d5d72b02467b04653ff37be85b8e201e9af66
-cp %{_builddir}/conmon-2.1.0/tools/vendor/github.com/cpuguy83/go-md2man/LICENSE.md %{buildroot}/usr/share/package-licenses/conmon/b7a606730713ac061594edab33cf941704b4a95c
-cp %{_builddir}/conmon-2.1.0/tools/vendor/github.com/russross/blackfriday/LICENSE.txt %{buildroot}/usr/share/package-licenses/conmon/da34754c05d40ff81f91de8c1b85ea6e5503e21d
+cp %{_builddir}/conmon-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/conmon/147d5d72b02467b04653ff37be85b8e201e9af66
+cp %{_builddir}/conmon-%{version}/tools/vendor/github.com/cpuguy83/go-md2man/LICENSE.md %{buildroot}/usr/share/package-licenses/conmon/b7a606730713ac061594edab33cf941704b4a95c
+cp %{_builddir}/conmon-%{version}/tools/vendor/github.com/russross/blackfriday/LICENSE.txt %{buildroot}/usr/share/package-licenses/conmon/da34754c05d40ff81f91de8c1b85ea6e5503e21d
 DESTDIR=%{buildroot} ninja -C builddir install
 
 %files
